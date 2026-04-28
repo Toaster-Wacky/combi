@@ -28,6 +28,7 @@
         .car-purple { filter: hue-rotate(270deg) drop-shadow(-5px -5px 5px rgba(0,0,0,0.5)); }
         .car-blue { filter: hue-rotate(210deg) drop-shadow(-5px -5px 5px rgba(0,0,0,0.5)); }
         .car-black { filter: grayscale(1) brightness(0.2) drop-shadow(-5px -5px 5px rgba(0,0,0,0.8)); }
+        .car-green { filter: hue-rotate(120deg) saturate(1.5) drop-shadow(-5px -5px 5px rgba(0,0,0,0.5)); }
         
         .car-wrapper { width: 80px; height: 80px; display: inline-flex; align-items: center; justify-content: center; }
         .car-emoji { font-size: 4rem; cursor: grab; display: inline-block; position: relative; transform: scaleX(-1); transition: transform 0.2s ease, filter 0.3s; }
@@ -131,7 +132,7 @@
                         <div class="flex-1 border-b-4 border-dashed border-slate-500 relative"><div id="intro-car-2" class="intro-car car-red">🏎️</div></div>
                         <div class="flex-1 border-b-4 border-dashed border-slate-500 relative"><div id="intro-car-3" class="intro-car car-purple">🏎️</div></div>
                         <div class="flex-1 border-b-4 border-dashed border-slate-500 relative"><div id="intro-car-4" class="intro-car car-blue">🏎️</div></div>
-                        <div class="flex-1 relative"><div id="intro-car-5" class="intro-car car-black">🏎️</div></div>
+                        <div class="flex-1 relative"><div id="intro-car-5" class="intro-car car-green">🏎️</div></div>
                     </div>
                     <div class="h-64 bg-slate-900 flex flex-col justify-center items-center p-8 z-20 shadow-[0_-20px_30px_rgba(0,0,0,0.5)]">
                         <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-amber-400 mb-3 tracking-tighter drop-shadow-lg text-center">Combinatorics Adventure</h1>
@@ -155,7 +156,7 @@
                         <div class="car-wrapper" id="wrap-1-2"><div id="car-1-2" class="car-emoji car-red" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 1)">🏎️</div></div>
                         <div class="car-wrapper" id="wrap-1-3"><div id="car-1-3" class="car-emoji car-purple" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 1)">🏎️</div></div>
                         <div class="car-wrapper" id="wrap-1-4"><div id="car-1-4" class="car-emoji car-blue" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 1)">🏎️</div></div>
-                        <div class="car-wrapper" id="wrap-1-5"><div id="car-1-5" class="car-emoji car-black" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 1)">🏎️</div></div>
+                        <div class="car-wrapper" id="wrap-1-5"><div id="car-1-5" class="car-emoji car-green" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 1)">🏎️</div></div>
                     </div>
                     <div class="bg-slate-900/80 p-6 md:p-8 rounded-2xl border border-slate-700 relative z-10 mt-auto min-w-[600px]">
                         <div class="grid grid-cols-5 gap-4 md:gap-6">
@@ -196,7 +197,7 @@
                             <div class="car-wrapper" id="wrap-2-2"><div id="car-2-2" class="car-emoji car-red" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 2)">🏎️</div></div>
                             <div class="car-wrapper" id="wrap-2-3"><div id="car-2-3" class="car-emoji car-purple" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 2)">🏎️</div></div>
                             <div class="car-wrapper" id="wrap-2-4"><div id="car-2-4" class="car-emoji car-blue" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 2)">🏎️</div></div>
-                            <div class="car-wrapper" id="wrap-2-5"><div id="car-2-5" class="car-emoji car-black" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 2)">🏎️</div></div>
+                            <div class="car-wrapper" id="wrap-2-5"><div id="car-2-5" class="car-emoji car-green" draggable="true" ondragstart="drag(event)" onclick="clickMove(this, 2)">🏎️</div></div>
                         </div>
                         <div class="mt-auto flex items-end justify-center gap-4 pb-4 min-w-[400px]">
                             <div class="flex flex-col items-center">
@@ -577,12 +578,14 @@
                         7 <span class="font-sans text-xl font-normal text-white">ways</span>
                     </div>
                     
-                    <button onclick="toggleSbBehindScenes()" class="text-white text-sm bg-slate-800 hover:bg-slate-700 px-6 py-2 rounded-full transition font-bold flex items-center gap-2 shadow-lg border border-slate-600">
+                    <!-- Fixed inline onclick handler and id to avoid conflict -->
+                    <button onclick="document.getElementById('slide-8-hidden').classList.toggle('hidden'); MathJax.typesetPromise([document.getElementById('sb-formula-final')]);" class="text-white text-sm bg-slate-800 hover:bg-slate-700 px-6 py-2 rounded-full transition font-bold flex items-center gap-2 shadow-lg border border-slate-600">
                         <i class="fa-solid fa-lightbulb"></i> See General Formula
                     </button>
                 </div>
 
-                <div id="slide-8-hidden" class="hidden-slide mt-8 glass-panel p-6 md:p-10 rounded-3xl border border-orange-500 flex-col items-center justify-center w-full">
+                <!-- Toggle class hidden instead of style display -->
+                <div id="slide-8-hidden" class="hidden mt-8 glass-panel p-6 md:p-10 rounded-3xl border border-orange-500 flex-col items-center justify-center w-full">
                     <h3 class="text-2xl md:text-3xl font-bold text-orange-400 mb-6 text-center">Stars and Bars: General Formula</h3>
                     <div class="bg-slate-900/80 p-6 md:p-8 rounded-2xl border border-slate-700 flex flex-col items-center gap-6 w-full overflow-x-auto">
                         <p class="text-slate-300 text-center md:text-lg font-sans">Combinations with repetition means choosing <span class="font-mono text-white text-xl">n</span> items from <span class="font-mono text-white text-xl">k</span> types <br><span class="text-sm">(using <span class="font-mono text-white">k-1</span> dividers to separate types)</span></p>
@@ -612,7 +615,7 @@
                 </div>
             </div>
 
-            <!-- ================= SLIDE 9: MYSTERY CARDS GAME (UPDATED TO FLIP EFFECT) ================= -->
+            <!-- ================= SLIDE 9: MYSTERY CARDS GAME ================= -->
             <div id="slide-9" class="slide">
                 <div class="text-center mb-6">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-400 mb-2 tracking-tight"><i class="fa-solid fa-gamepad"></i> Game Time: P or C?</h2>
@@ -697,13 +700,10 @@
             { id: 15, level: 'HARD', type: 'C', icon: 'fa-file-lines', colorText: 'text-pink-400', colorBorder: 'border-pink-400', text: 'Choose 4 questions to answer on an exam.' }
         ];
 
-        let gameInitialized = false;
-
         function initGame9() {
             const pool = document.getElementById('game-cards-pool');
             pool.innerHTML = '<div class="text-center text-slate-400 font-bold mb-2 uppercase text-sm tracking-wider w-full col-span-2 md:col-span-1">Pick a mystery card</div>';
             
-            // Randomize questions order
             const shuffledQuestions = [...gameQuestions].sort(() => 0.5 - Math.random());
 
             shuffledQuestions.forEach(q => {
@@ -725,17 +725,15 @@
             
             document.getElementById('target-p').innerHTML = '';
             document.getElementById('target-c').innerHTML = '';
-            gameInitialized = true;
         }
 
         function revealCardData(id) {
             const q = gameQuestions.find(x => x.id === id);
             const card = document.getElementById('gc-' + id);
-            if(card.getAttribute('draggable') === 'true') return; // already revealed
+            if(card.getAttribute('draggable') === 'true') return; 
             
             let badgeClass = q.level === 'EASY' ? 'badge-easy' : (q.level === 'MEDIUM' ? 'badge-medium' : 'badge-hard');
             
-            // Flip Animation
             card.style.transform = 'rotateY(90deg)';
             setTimeout(() => {
                 card.className = `game-card glass-panel p-3 rounded-xl border-l-4 ${q.colorBorder} text-sm flex flex-col gap-1 cursor-grab bg-slate-800 shadow-lg`;
@@ -745,7 +743,7 @@
                 `;
                 card.setAttribute('draggable', 'true');
                 card.setAttribute('ondragstart', 'dragGame(event)');
-                card.onclick = null; // remove click event so it can be dragged
+                card.onclick = null; 
                 card.style.transform = 'rotateY(0deg)';
             }, 150);
         }
@@ -849,7 +847,44 @@
         }
 
         // ==========================================
-        // SLIDE 7: LOTTERY
+        // SLIDE 6: LOTTERY
+        // ==========================================
+        let lotStep6 = 0; 
+        function initLottery6() { 
+            lotStep6 = 0; 
+            document.getElementById('lot-zone-a').style = "opacity: 0.3; transform: scale(0.95);"; 
+            document.getElementById('lot-zone-b').style = "opacity: 0.3; transform: scale(0.95);"; 
+            document.getElementById('lot-operator').style.opacity = '0'; 
+            document.getElementById('lottery-ans6').classList.add('hidden'); 
+            
+            const btn = document.getElementById('btn-lottery6'); 
+            btn.innerText = "Analyze Zone A"; 
+            btn.classList.remove('hidden', 'bg-emerald-600', 'hover:bg-emerald-500', 'bg-purple-600', 'hover:bg-purple-500'); 
+            btn.classList.add('bg-blue-600', 'hover:bg-blue-500'); 
+        }
+
+        function nextLotteryStep6() { 
+            const btn = document.getElementById('btn-lottery6'); 
+            lotStep6++; 
+            if(lotStep6 === 1) { 
+                document.getElementById('lot-zone-a').style = "opacity: 1; transform: scale(1);"; 
+                btn.innerText = "Analyze Zone B"; 
+                btn.classList.replace('bg-blue-600', 'bg-emerald-600'); 
+                btn.classList.replace('hover:bg-blue-500', 'hover:bg-emerald-500'); 
+            } else if (lotStep6 === 2) { 
+                document.getElementById('lot-zone-b').style = "opacity: 1; transform: scale(1);"; 
+                btn.innerText = "Combine (Multiplication Rule)"; 
+                btn.classList.replace('bg-emerald-600', 'bg-purple-600'); 
+                btn.classList.replace('hover:bg-emerald-500', 'hover:bg-purple-500'); 
+            } else if (lotStep6 === 3) { 
+                document.getElementById('lot-operator').style.opacity = '1'; 
+                document.getElementById('lottery-ans6').classList.remove('hidden'); 
+                btn.classList.add('hidden'); 
+            } 
+        }
+
+        // ==========================================
+        // SLIDE 7: LOTTERY DOTS
         // ==========================================
         let lot7Step = 0;
         function initLottery7() {
@@ -895,7 +930,8 @@
             } 
             document.getElementById('sb-status').innerHTML = `<span class="text-red-400">🍎 ?</span> <span class="text-slate-600">|</span> <span class="text-yellow-400">🍍 ?</span>`; 
             document.getElementById('sb-current-way').innerText = `This is Way 1 out of 7.`;
-            document.getElementById('slide-8-hidden').style.display = 'none';
+            document.getElementById('slide-8-hidden').classList.add('hidden');
+            document.getElementById('slide-8-hidden').classList.remove('flex');
             
             document.getElementById('btn-reveal-8').classList.remove('hidden');
             document.getElementById('ans-8').classList.add('hidden');
@@ -918,16 +954,6 @@
             } 
             document.getElementById('sb-status').innerHTML = `<span class="text-red-400">🍎 ${numApples}</span> <span class="text-slate-600">|</span> <span class="text-yellow-400">🍍 ${numPineapples}</span>`; 
             document.getElementById('sb-current-way').innerText = `This is Way ${pos + 1} out of 7.`;
-        }
-
-        function toggleSbBehindScenes() {
-            const hiddenSlide = document.getElementById('slide-8-hidden');
-            if(hiddenSlide.style.display === 'flex') {
-                hiddenSlide.style.display = 'none';
-            } else {
-                hiddenSlide.style.display = 'flex';
-                MathJax.typesetPromise([document.getElementById('sb-formula-final')]); 
-            }
         }
 
         // ==========================================
